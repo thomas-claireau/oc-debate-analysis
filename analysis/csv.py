@@ -1,13 +1,21 @@
 import os
+import logging as lg
+
+lg.basicConfig(level=lg.DEBUG)
 
 
 def launch_analysis(data_file):
     directory = os.path.dirname(os.path.dirname(__file__))
     file = os.path.join(directory, "data", data_file)
 
-    with open(file, 'r') as file:
-        preview = file.readline()
-        print(preview)
+    breakpoint()
+
+    try:
+        with open(file, 'r') as file:
+            preview = file.readline()
+            lg.debug('{}'.format(preview))
+    except FileNotFoundError as e:
+        lg.critical("Une erreur critique est survenue : {}".format(e))
 
 
 def main():
