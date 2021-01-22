@@ -2,8 +2,8 @@
 # coding: utf-8
 
 import argparse
-import analysis.csv as c_an
-import analysis.xml as x_an
+import analysis.csv_file as c_an
+import analysis.xml_file as x_an
 
 
 def parse_arguments():

@@ -1,5 +1,7 @@
 import os
 import logging as lg
+import pandas as pd
+
 
 lg.basicConfig(level=lg.DEBUG)
 
@@ -8,12 +10,8 @@ def launch_analysis(data_file):
     directory = os.path.dirname(os.path.dirname(__file__))
     file = os.path.join(directory, "data", data_file)
 
-    breakpoint()
-
     try:
-        with open(file, 'r') as file:
-            preview = file.readline()
-            lg.debug('{}'.format(preview))
+        lg.debug('{}'.format(pd.read_csv(file, sep=";")))
     except FileNotFoundError as e:
         lg.critical("Une erreur critique est survenue : {}".format(e))
 
